@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw-21</title>
+<body>
+    <canvas id="snowman" width="500" height="700"></canvas>
+    <script>
+        const page = document.querySelector('#snowman');
+        if (page.getContext) {
+            const ctx = page.getContext('2d');
+            function snowmanCircklePart(x,y,r,start,end) {
+                let Rgradient = ctx.createRadialGradient(x, y, r*0.3, x, y, r);
+                Rgradient.addColorStop(0, '#ffffff');
+                Rgradient.addColorStop(1, '#e0eafc');
+                ctx.fillStyle = Rgradient;
+                ctx.beginPath();
+                    ctx.arc(x,y,r, start, end);
+                ctx.fill();
+                ctx.stroke();
+            };
+            // елка
+            ctx.fillStyle = 'brown';
+            ctx.beginPath();
+                ctx.moveTo(390, 540);
+                ctx.lineTo(390, 570);
+                ctx.ellipse(400, 570, 10, 5,0, 0, Math.PI);
+                ctx.lineTo(410, 570);
+                ctx.lineTo(410, 540);
+            ctx.fill();
+            ctx.fillStyle = 'green';
+            ctx.beginPath();
+                ctx.moveTo(400, 100);
+                ctx.lineTo(300, 500);
+                ctx.moveTo(400, 100);
+                ctx.lineTo(500, 500);
+                ctx.ellipse(400, 500, 100, 40,0, 0, Math.PI);
+            ctx.fill();
+            // нижний шар
+            snowmanCircklePart(250, 500, 100, 5.3, 4.1);
+            // левая рука
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#000'
+            ctx.beginPath();
+                ctx.moveTo(250, 330);
+                ctx.lineTo(320, 280);
+            ctx.stroke();
+            ctx.beginPath();
+                ctx.lineWidth = 4;
+                ctx.moveTo(320, 280);
+                ctx.lineTo(390, 260);
+            ctx.stroke();
+            ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.moveTo(390, 260);
+                ctx.lineTo(405, 250);
+                ctx.moveTo(390, 260);
+                ctx.lineTo(410, 255);
+                ctx.moveTo(390, 260);
+                ctx.lineTo(403, 265);
+            ctx.stroke();
+            // средний шар
+            ctx.lineWidth = 1;
+            snowmanCircklePart(250, 360, 80, 5.15, 4.3);
+            // нос
+            ctx.fillStyle = '#ed9121'
+            ctx.strokeStyle = '#000000';
+            ctx.beginPath();
+                ctx.moveTo(300, 250);
+                ctx.lineTo(330, 220);
+                ctx.lineTo(295, 230);
+                ctx.moveTo(300, 229);
+                ctx.lineTo(303, 235);
+                ctx.moveTo(305, 227);
+                ctx.lineTo(308, 233);
+                ctx.moveTo(310, 225);
+                ctx.lineTo(313, 229);
+            ctx.fill();
+            ctx.stroke();
+            // голова
+            snowmanCircklePart(250, 250, 50, 5.4, 4);
+            // глаз
+            ctx.fillStyle = '#000000';
+            ctx.beginPath();
+                ctx.ellipse(285, 235, 8, 4, 2.1, 0, Math.PI*2);
+            ctx.fill();
+
+            const gradient = ctx.createLinearGradient(200,150, 250, 220);
+            gradient.addColorStop(0, '#D2CCC4');
+            gradient.addColorStop(1, '#2F4353');
+            // ведро
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+                ctx.moveTo(218, 212);
+                ctx.lineTo(234, 150);
+                ctx.ellipse(250, 150, 16, 6,0, Math.PI, Math.PI*2, true);
+                ctx.lineTo(267, 150);
+                ctx.ellipse(250, 210, 31, 10,0, 0, Math.PI);
+            ctx.fill();
+            ctx.stroke();
+            // верхушка ведра
+            ctx.fillStyle = gradient;
+            ctx.strokeStyle = '#2F4353';
+            ctx.beginPath();
+                ctx.ellipse(250, 150, 16, 6,0, 0, Math.PI*2);
+            ctx.fill();
+            ctx.stroke();
+            // шарик
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+                ctx.arc(405,255,20,0,Math.PI*2);
+            ctx.fill();
+            ctx.stroke();
+            // рука
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#000'
+            ctx.beginPath();
+                ctx.moveTo(270, 350);
+                ctx.lineTo(350, 330);
+            ctx.stroke();
+            ctx.beginPath();
+                ctx.lineWidth = 4;
+                ctx.moveTo(350, 330);
+                ctx.lineTo(400, 270);
+            ctx.stroke();
+            ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.moveTo(400, 270);
+                ctx.lineTo(400, 255);
+                ctx.moveTo(400, 270);
+                ctx.lineTo(410, 255);
+                ctx.moveTo(400, 270);
+                ctx.lineTo(415, 263);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
